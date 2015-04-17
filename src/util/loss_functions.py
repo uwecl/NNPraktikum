@@ -6,7 +6,7 @@ from util.activation_functions import Activation
 
 class Error:
     """
-    Abstract class of a classifier
+    Abstract class of an Error
     """
     __metaclass__ = ABCMeta
 
