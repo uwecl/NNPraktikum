@@ -3,13 +3,13 @@ from random import random
 
 
 class StupidRecognizer(Classifier):
-    '''
+    """
     This class demonstrates how to follow an OOP approach to build a digit
     recognizer.
 
     It also serves as a baseline to compare with other
     recognizing method later on.
-    '''
+    """
 
     def __init__(self, train, valid, test, byChance=0.5):
 

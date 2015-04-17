@@ -4,9 +4,26 @@ from util.activation_functions import Activation
 
 
 class Perceptron(Classifier):
-    '''
+    """
     A digit-7 recognizer based on perceptron algorithm
-    '''
+
+    Parameters
+    ----------
+    train : list
+    valid : list
+    test : list
+    learningRate : float
+    epochs : positive int
+
+    Attributes
+    ----------
+    learningRate : float
+    epochs : int
+    trainingSet : list
+    validationSet : list
+    testSet : list
+    weight : list
+    """
     def __init__(self, train, valid, test, learningRate=0.01, epochs=50):
 
         self.learningRate = learningRate
@@ -21,12 +38,23 @@ class Perceptron(Classifier):
         self.weight = np.random.rand(self.trainingSet.input.shape[1], 1)/1000
 
     def train(self, trainingSet, validationSet):
-        # Here you have to implement the Perceptron Learning Algorithm
+        """Train the perceptron with the perceptron learning algorithm."""
+        # TODO: Here you have to implement the Perceptron Learning Algorithm
         return self.fire(testInstance)
 
     def classify(self, testInstance):
-        # Here you have to implement the classification for one instance, i.e.,
-        # return True if the testInstance is recognized as a 7, False otherwise
+        """Classify a single instance.
+
+        Parameters
+        ----------
+        testInstance : list of floats
+
+        Returns
+        -------
+        bool :
+            True if the testInstance is recognized as a 7, False otherwise.
+        """
+        # TODO: Here you have to implement the classification for one instance
         pass
 
     def evaluate(self, test):

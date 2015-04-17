@@ -4,9 +4,26 @@ from data.data_set import DataSet
 
 
 class MNISTSeven(object):
-    '''
+    """
     Small subset (5000 instances) of MNIST data to recognize the digit 7
-    '''
+
+    Parameters
+    ----------
+    dataPath : string
+        Path to a CSV file with delimiter ',' and unint8 values.
+    numTrain : int
+        Number of training examples.
+    numValid : int
+        Number of validation examples.
+    numTest : int
+        Number of test examples.
+
+    Attributes
+    ----------
+    trainingSet : list
+    validationSet : list
+    testSet : list
+    """
 
     #dataPath = "data/mnist_seven.csv"
 
@@ -19,6 +36,7 @@ class MNISTSeven(object):
         self.load(dataPath, numTrain, numValid, numTest)
 
     def load(self, dataPath, numTrain, numValid, numTest):
+        """Load the data."""
         print("Loading data from " + dataPath + "...")
 
         data = np.genfromtxt(dataPath, delimiter=",", dtype="uint8")

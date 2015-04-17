@@ -1,11 +1,15 @@
+"""
+Activation functions which can be used within neurons.
+"""
+
 import numpy as np
 from math import *
 
 
 class Activation:
-    '''
+    """
     Containing various activation functions
-    '''
+    """
 
     @staticmethod
     def sign(netOutput, threshold=0):
