@@ -5,9 +5,9 @@ from util.activation_functions import Activation
 
 
 class Error:
-    '''
-    Abstract class of a classifier
-    '''
+    """
+    Abstract class of an Error
+    """
     __metaclass__ = ABCMeta
 
     @abstractmethod
@@ -17,9 +17,9 @@ class Error:
 
 
 class AbsoluteError(Error):
-    '''
+    """
     The Loss calculated by the number of differences between target and output
-    '''
+    """
 
     def calculateError(self, target, output):
         # It is the numbers of differences between target and output
@@ -27,10 +27,10 @@ class AbsoluteError(Error):
 
 
 class MeanSquaredError(Error):
-    '''
+    """
     The Loss calculated by the mean of the total squares of differences between
     target and output.
-    '''
+    """
 
     def calculateError(self, target, output):
         # Here you have to calculate the MeanSquareError
@@ -39,10 +39,10 @@ class MeanSquaredError(Error):
 
 
 class CrossEntropyError(Error):
-    '''
+    """
     The Loss calculated by the mean of the total squares of differences between
     target and output.
-    '''
+    """
 
     def calculateError(self, target, output):
         pass

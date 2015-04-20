@@ -1,9 +1,18 @@
 
 
 class DataSet(object):
-    '''
+    """
     Representing train, valid or test sets
-    '''
+
+    Parameters
+    ----------
+    data : list
+    oneHot : bool
+        If this flag is set, then all labels which are not `targetDigit` will
+        be transformed to False and `targetDigit` bill be transformed to True.
+    targetDigit : string
+        Label of the dataset, e.g. '3'.
+    """
 
     def __init__(self, data, oneHot=True, targetDigit='3'):
 
@@ -15,7 +24,6 @@ class DataSet(object):
 
         # Transform all labels which is not the targetDigit to False,
         # The label of targetDigit will be True,
-        # The transformation depends on oneHot flag
         if oneHot:
             self.label = map(lambda a: 1 if str(a) == targetDigit else 0,
                              self.label)

@@ -4,9 +4,9 @@ from sklearn.metrics import accuracy_score
 
 
 class Evaluator:
-    '''
+    """
     Print performance of a classification model over a dataset
-    '''
+    """
 
     def printTestLabel(self, testSet):
         # print all test labels

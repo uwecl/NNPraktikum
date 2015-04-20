@@ -2,9 +2,9 @@ from abc import ABCMeta, abstractmethod
 
 
 class Classifier:
-    '''
+    """
     Abstract class of a classifier
-    '''
+    """
     __metaclass__ = ABCMeta
 
     @abstractmethod

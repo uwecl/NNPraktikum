@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from data.mnist_seven import MNISTSeven
 from model.stupid_recognizer import StupidRecognizer
 from model.perceptron import Perceptron
