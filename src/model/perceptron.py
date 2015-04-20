@@ -37,10 +37,11 @@ class Perceptron(Classifier):
         # around 0 and0.1
         self.weight = np.random.rand(self.trainingSet.input.shape[1], 1)/1000
 
-    def train(self, trainingSet, validationSet):
+    def train(self):
         """Train the perceptron with the perceptron learning algorithm."""
         # TODO: Here you have to implement the Perceptron Learning Algorithm
-        return self.fire(testInstance)
+        # TODO: use self.trainingSet
+        # TODO: use self.validationSet
 
     def classify(self, testInstance):
         """Classify a single instance.
@@ -55,12 +56,12 @@ class Perceptron(Classifier):
             True if the testInstance is recognized as a 7, False otherwise.
         """
         # TODO: Here you have to implement the classification for one instance
-        pass
+        return self.fire(testInstance)
 
-    def evaluate(self, test):
+    def evaluate(self):
         # One you can classify an instance, just use map for all of the test
         # set.
-        return map(self.classify, test.input)
+        return list(map(self.classify, self.testSet.input))
 
     def fire(self, input):
         return Activation.sign(np.dot(np.array(input), self.weight))
