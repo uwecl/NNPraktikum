@@ -55,13 +55,14 @@ class Perceptron(Classifier):
         bool :
             True if the testInstance is recognized as a 7, False otherwise.
         """
-        # TODO: Here you have to implement the classification for one instance
         return self.fire(testInstance)
 
-    def evaluate(self):
+    def evaluate(self, data=None):
+        if data is None:
+            data = self.testSet.input
         # One you can classify an instance, just use map for all of the test
         # set.
-        return list(map(self.classify, self.testSet.input))
+        return list(map(self.classify, data))
 
     def fire(self, input):
         return Activation.sign(np.dot(np.array(input), self.weight))
