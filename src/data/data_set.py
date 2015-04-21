@@ -12,6 +12,14 @@ class DataSet(object):
         be transformed to False and `targetDigit` bill be transformed to True.
     targetDigit : string
         Label of the dataset, e.g. '3'.
+
+    Attributes
+    ----------
+    input : list
+    label : list
+        A labels for the data given in `input`.
+    oneHot : bool
+    targetDigit : string
     """
 
     def __init__(self, data, oneHot=True, targetDigit='3'):
@@ -25,5 +33,8 @@ class DataSet(object):
         # Transform all labels which is not the targetDigit to False,
         # The label of targetDigit will be True,
         if oneHot:
-            self.label = map(lambda a: 1 if str(a) == targetDigit else 0,
-                             self.label)
+            self.label = list(map(lambda a: 1 if str(a) == targetDigit else 0,
+                                  self.label))
+
+    def __iter__(self):
+        return self.input.__iter__()

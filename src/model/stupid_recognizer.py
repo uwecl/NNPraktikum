@@ -24,9 +24,9 @@ class StupidRecognizer(Classifier):
         pass
 
     def classify(self, testInstance):
-        # byChange is the probability of being correctly recognized
+        # byChance is the probability of being correctly recognized
         return random() < self.byChance
 
     def evaluate(self):
-        return map(self.classify, self.testSet.input)
+        return list(map(self.classify, self.testSet.input))
         #return map(lambda: random() < self.byChance(), test.X)
