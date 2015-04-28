@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import numpy as np
 from numpy.random import shuffle
 from data.data_set import DataSet

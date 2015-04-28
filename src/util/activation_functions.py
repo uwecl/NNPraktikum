@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Activation functions which can be used within neurons.
 """

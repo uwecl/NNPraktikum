@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 from data.mnist_seven import MNISTSeven
 from model.stupid_recognizer import StupidRecognizer

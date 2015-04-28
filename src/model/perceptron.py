@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from model.classifier import Classifier
 import numpy as np
 from util.activation_functions import Activation

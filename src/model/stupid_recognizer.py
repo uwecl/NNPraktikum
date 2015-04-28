@@ -1,5 +1,15 @@
+# -*- coding: utf-8 -*-
+
+"""A stupid recognizer which classifies signals randomly.
+
+This file is ment to be used as a template for other models.
+"""
+
 from model.classifier import Classifier
 from random import random
+
+__author__ = "Thanh-Le Ha"  # Adjust this when you copy the file
+__email__ = "thanh-le.ha@kit.edu"  # Adjust this when you copy the file
 
 
 class StupidRecognizer(Classifier):
