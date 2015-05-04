@@ -1,6 +1,14 @@
-from model.classifier import Classifier
+import sys
+import logging
+
 import numpy as np
+
 from util.activation_functions import Activation
+from model.classifier import Classifier 
+
+logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s',
+                    level=logging.DEBUG,
+                    stream=sys.stdout)
 
 
 class Perceptron(Classifier):
@@ -35,13 +43,40 @@ class Perceptron(Classifier):
 
         # Initialize the weight vector with small random values
         # around 0 and0.1
-        self.weight = np.random.rand(self.trainingSet.input.shape[1], 1)/1000
+        self.weight = np.random.rand(self.trainingSet.input.shape[1])/100
 
-    def train(self):
-        """Train the perceptron with the perceptron learning algorithm."""
-        # TODO: Here you have to implement the Perceptron Learning Algorithm
-        # TODO: use self.trainingSet
-        # TODO: use self.validationSet
+    def train(self, verbose=True):
+        """Train the perceptron with the perceptron learning algorithm.
+        
+        Parameters
+        ----------
+        verbose : bool
+            Print logging messages with validation accuracy if verbose is True.
+        """
+      
+        from util.loss_functions import DifferentError
+        loss = DifferentError()
+        
+        learned = False
+        iteration = 0
+        
+        while not learned:
+            totalError = 0
+            for input, label in zip(self.trainingSet.input, self.trainingSet.label):
+                output = self.fire(input)
+                if output != label:
+                    error = loss.calculateError(label, output)
+                    self.updateWeights(input, error)
+                    totalError += error
+            
+            if verbose:
+                logging.info("Iteration: %i; Error: %i",iteration, -totalError)
+                iteration +=1
+             
+            if totalError == 0 or iteration >= self.epochs:
+                # stop criteria is reached
+                learned = True 
+        
 
     def classify(self, testInstance):
         """Classify a single instance.
@@ -57,12 +92,29 @@ class Perceptron(Classifier):
         """
         return self.fire(testInstance)
 
-    def evaluate(self, data=None):
-        if data is None:
-            data = self.testSet.input
-        # One you can classify an instance, just use map for all of the test
+    def evaluate(self, test=None):
+        """Evaluate a whole dataset.
+
+        Parameters
+        ----------
+        test : the dataset to be classified
+        if no test, the test set associated to the classifier will be used 
+
+        Returns
+        -------
+        List:
+            List of classified decisions for the dataset's entries.
+        """
+        if test is None:
+            test = self.testSet.input
+        # Once you can classify an instance, just use map for all of the test
         # set.
-        return list(map(self.classify, data))
+        return list(map(self.classify, test))
+    
+    def updateWeights(self, input, error): 
+        for index in xrange(len(self.weight)):
+            self.weight[index] += self.learningRate*error*input[index]
 
     def fire(self, input):
+        """Fire the output of the perceptron corresponding to the input """
         return Activation.sign(np.dot(np.array(input), self.weight))
