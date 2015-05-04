@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import numpy as np
 from numpy.random import shuffle
 from data.data_set import DataSet
@@ -25,7 +27,7 @@ class MNISTSeven(object):
     testSet : list
     """
 
-    #dataPath = "data/mnist_seven.csv"
+    # dataPath = "data/mnist_seven.csv"
 
     def __init__(self, dataPath, numTrain=3000, numValid=1000, numTest=1000):
 

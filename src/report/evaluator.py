@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from __future__ import division
 from sklearn.metrics import confusion_matrix, classification_report
 from sklearn.metrics import accuracy_score

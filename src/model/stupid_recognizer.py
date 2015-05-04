@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from model.classifier import Classifier
 from random import random
 
