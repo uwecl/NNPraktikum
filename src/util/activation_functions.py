@@ -13,7 +13,7 @@ class Activation:
 
     @staticmethod
     def sign(netOutput, threshold=0):
-        return netOutput < threshold
+        return netOutput >= threshold 
 
     @staticmethod
     def sigmoid(netOutput):

@@ -24,6 +24,15 @@ class AbsoluteError(Error):
     def calculateError(self, target, output):
         # It is the numbers of differences between target and output
         return abs(target - output)
+    
+class DifferentError(Error):
+    """
+    The Loss calculated by the number of differences between target and output
+    """
+
+    def calculateError(self, target, output):
+        # It is the numbers of differences between target and output
+        return target - output
 
 
 class MeanSquaredError(Error):
@@ -33,9 +42,21 @@ class MeanSquaredError(Error):
     """
 
     def calculateError(self, target, output):
-        # Here you have to calculate the MeanSquareError
+        # Here you have to calculate the MeanSquaredError
+        # MSE = 1/n*sum (i=1 to n) of (target_i - output_i)^2)
+        pass
+    
+class SumSquaredError(Error):
+    """
+    The Loss calculated by the sum of the total squares of differences between
+    target and output.
+    """
+
+    def calculateError(self, target, output):
+        # Here you have to calculate the SumSquaredError
         # MSE = 1/2*sum (i=1 to n) of (target_i - output_i)^2)
         pass
+
 
 
 class CrossEntropyError(Error):
