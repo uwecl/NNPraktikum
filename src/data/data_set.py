@@ -11,7 +11,7 @@ class DataSet(object):
         If this flag is set, then all labels which are not `targetDigit` will
         be transformed to False and `targetDigit` bill be transformed to True.
     targetDigit : string
-        Label of the dataset, e.g. '3'.
+        Label of the dataset, e.g. '7'.
 
     Attributes
     ----------
@@ -22,7 +22,7 @@ class DataSet(object):
     targetDigit : string
     """
 
-    def __init__(self, data, oneHot=True, targetDigit='3'):
+    def __init__(self, data, oneHot=True, targetDigit='7'):
 
         # The label of the digits is always the first fields
         self.input = 1.0*data[:, 1:]/255
