@@ -2,8 +2,7 @@
 Activation functions which can be used within neurons.
 """
 
-import numpy as np
-from math import *
+from math import e
 
 
 class Activation:
@@ -13,7 +12,7 @@ class Activation:
 
     @staticmethod
     def sign(netOutput, threshold=0):
-        return netOutput >= threshold 
+        return netOutput >= threshold
 
     @staticmethod
     def sigmoid(netOutput):

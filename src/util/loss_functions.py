@@ -1,7 +1,4 @@
 from abc import ABCMeta, abstractmethod
-import numpy as np
-from math import *
-from util.activation_functions import Activation
 
 
 class Error:
@@ -24,7 +21,8 @@ class AbsoluteError(Error):
     def calculateError(self, target, output):
         # It is the numbers of differences between target and output
         return abs(target - output)
-    
+
+
 class DifferentError(Error):
     """
     The Loss calculated by the number of differences between target and output
@@ -45,7 +43,8 @@ class MeanSquaredError(Error):
         # Here you have to calculate the MeanSquaredError
         # MSE = 1/n*sum (i=1 to n) of (target_i - output_i)^2)
         pass
-    
+
+
 class SumSquaredError(Error):
     """
     The Loss calculated by the sum of the total squares of differences between
@@ -56,7 +55,6 @@ class SumSquaredError(Error):
         # Here you have to calculate the SumSquaredError
         # MSE = 1/2*sum (i=1 to n) of (target_i - output_i)^2)
         pass
-
 
 
 class CrossEntropyError(Error):
