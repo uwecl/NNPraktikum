@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from model.classifier import Classifier
 from random import random
+from model.classifier import Classifier
+
+__author__ = "ABC XYZ"  # Adjust this when you copy the file
+__email__ = "ABC.XYZ@student.kit.edu"  # Adjust this when you copy the file
 
 
 class StupidRecognizer(Classifier):
@@ -31,4 +34,3 @@ class StupidRecognizer(Classifier):
 
     def evaluate(self):
         return list(map(self.classify, self.testSet.input))
-        #return map(lambda: random() < self.byChance(), test.X)

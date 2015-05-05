@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
+
 """
 Loss functions.
 """
+
 
 from abc import ABCMeta, abstractmethod
 

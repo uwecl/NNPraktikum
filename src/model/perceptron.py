@@ -6,7 +6,7 @@ import logging
 import numpy as np
 
 from util.activation_functions import Activation
-from model.classifier import Classifier 
+from model.classifier import Classifier
 
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s',
                     level=logging.DEBUG,
@@ -49,36 +49,36 @@ class Perceptron(Classifier):
 
     def train(self, verbose=True):
         """Train the perceptron with the perceptron learning algorithm.
-        
+
         Parameters
         ----------
         verbose : bool
             Print logging messages with validation accuracy if verbose is True.
         """
-      
+
         from util.loss_functions import DifferentError
         loss = DifferentError()
-        
+
         learned = False
         iteration = 0
-        
+
         while not learned:
             totalError = 0
-            for input, label in zip(self.trainingSet.input, self.trainingSet.label):
+            for input, label in zip(self.trainingSet.input,
+                                    self.trainingSet.label):
                 output = self.fire(input)
                 if output != label:
                     error = loss.calculateError(label, output)
                     self.updateWeights(input, error)
                     totalError += error
-            
+
             if verbose:
-                logging.info("Iteration: %i; Error: %i",iteration, -totalError)
-                iteration +=1
-             
+                logging.info("Iteration: %i; Error: %i", iteration, -totalError)
+                iteration += 1
+
             if totalError == 0 or iteration >= self.epochs:
                 # stop criteria is reached
-                learned = True 
-        
+                learned = True
 
     def classify(self, testInstance):
         """Classify a single instance.
@@ -112,8 +112,8 @@ class Perceptron(Classifier):
         # Once you can classify an instance, just use map for all of the test
         # set.
         return list(map(self.classify, test))
-    
-    def updateWeights(self, input, error): 
+
+    def updateWeights(self, input, error):
         for index in xrange(len(self.weight)):
             self.weight[index] += self.learningRate*error*input[index]
 
