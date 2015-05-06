@@ -5,8 +5,8 @@ import numpy as np
 from util.activation_functions import Activation
 from model.classifier import Classifier
 
-__author__ = "ABC XYZ"  # Adjust this when you copy the file
-__email__ = "ABC.XYZ@student.kit.edu"  # Adjust this when you copy the file
+__author__ = "Benjamin Rupp"
+__email__ = "uwecl@student.kit.edu"
 
 
 class LogisticRegression(Classifier):
@@ -45,10 +45,25 @@ class LogisticRegression(Classifier):
 
     def train(self):
         """Train the Logistic Regression"""
-        # TODO: Here you have to implement the Logistic Regression Training
-        # Algorithm
-        # TODO: use self.trainingSet
-        # TODO: use self.validationSet
+        
+        for epoch in range(self.epochs):
+            pos = 0
+            grad = 0
+
+            pos_step_input = 0
+            neg_step_input = 0
+            for sample in self.trainingSet.input:
+
+                label = self.trainingSet.label[pos]
+                output = self.fire(sample)
+               
+                error = label - output
+                grad = grad + error * sample
+                deltaWeight = self.learningRate * grad * sample
+                self.weight = self.weight + deltaWeight
+
+                pos = pos + 1
+
 
     def classify(self, testInstance):
         """Classify a single instance.
@@ -62,9 +77,13 @@ class LogisticRegression(Classifier):
         bool :
             True if the testInstance is recognized as a 7, False otherwise.
         """
-        # TODO: Here you have to implement the Logistic Regression Algorithm
-        # to classify a single instance
-        pass
+        output = self.fire(testInstance)
+
+        if output > 0.5:
+            return True
+        else:
+            return False
+
 
     def evaluate(self, test=None):
         """Evaluate a whole dataset.

@@ -21,7 +21,7 @@ def main():
     myLRClassifier = LogisticRegression(data.trainingSet,
                                         data.validationSet,
                                         data.testSet,
-                                        learningRate=0.005,
+                                        learningRate=0.0005,
                                         epochs=30)
 
     # Train the classifiers
@@ -33,7 +33,7 @@ def main():
     print("Done..")
 
     print("\nPerceptron has been training..")
-    myPerceptronClassifier.train()
+    myPerceptronClassifier.train(verbose=False)
     print("Done..")
 
     print("\nLogistic Regression has been training..")
@@ -58,9 +58,9 @@ def main():
     # evaluator.printComparison(data.testSet, perceptronPred)
     evaluator.printAccuracy(data.testSet, perceptronPred)
 
-    # print("\nResult of the Logistic Regression recognizer:")
+    print("\nResult of the Logistic Regression recognizer:")
     # evaluator.printComparison(data.testSet, perceptronPred)
-    # evaluator.printAccuracy(data.testSet, lrPred)
+    evaluator.printAccuracy(data.testSet, lrPred)
 
     # eval.printConfusionMatrix(data.testSet, pred)
     # eval.printClassificationResult(data.testSet, pred, target_names)
