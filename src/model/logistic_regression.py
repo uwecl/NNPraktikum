@@ -69,7 +69,7 @@ class LogisticRegression(Classifier):
                                     self.trainingSet.label):
                 output = self.fire(input)
                 # compute gradient
-                grad += (label - output)*input
+                grad += -(label - output)*input
 
                 # compute recognizing error, not BCE
                 predictedLabel = self.classify(input)
@@ -121,7 +121,7 @@ class LogisticRegression(Classifier):
         return list(map(self.classify, test))
 
     def updateWeights(self, grad):
-        self.weight += self.learningRate*grad
+        self.weight -= self.learningRate*grad
 
     def fire(self, input):
         return Activation.sigmoid(np.dot(np.array(input), self.weight))
