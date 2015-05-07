@@ -72,9 +72,12 @@ class Perceptron(Classifier):
                     self.updateWeights(input, error)
                     totalError += error
 
+            iteration += 1
+            
             if verbose:
                 logging.info("Epoch: %i; Error: %i", iteration, -totalError)
-                iteration += 1
+            
+            
 
             if totalError == 0 or iteration >= self.epochs:
                 # stop criteria is reached

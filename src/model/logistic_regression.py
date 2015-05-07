@@ -78,10 +78,12 @@ class LogisticRegression(Classifier):
 
             self.updateWeights(grad)
             totalError = abs(totalError)
+            
+            iteration += 1
 
             if verbose:
                 logging.info("Epoch: %i; Error: %i", iteration, totalError)
-                iteration += 1
+                
 
             if totalError == 0 or iteration >= self.epochs:
                 # stop criteria is reached
