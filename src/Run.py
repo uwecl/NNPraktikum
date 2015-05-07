@@ -33,7 +33,7 @@ def main():
     print("Done..")
 
     print("\nPerceptron has been training..")
-    myPerceptronClassifier.train(verbose=False)
+    myPerceptronClassifier.train(verbose=True)
     print("Done..")
 
     print("\nLogistic Regression has been training..")

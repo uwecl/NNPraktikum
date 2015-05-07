@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import numpy as np
+import logging
 
 from util.activation_functions import Activation
 from model.classifier import Classifier
@@ -49,12 +50,15 @@ class LogisticRegression(Classifier):
         from util.loss_functions import DifferentError
         loss = DifferentError()
         
-        for epoch in range(self.epochs):
+        learned = False
+        iteration = 0
+
+        #for epoch in range(self.epochs):
+        while not learned:
             pos = 0
             grad = 0
+            totalError = 0
 
-            pos_step_input = 0
-            neg_step_input = 0
             for sample in self.trainingSet.input:
 
                 label = self.trainingSet.label[pos]
@@ -65,7 +69,15 @@ class LogisticRegression(Classifier):
                 deltaWeight = self.learningRate * grad
                 self.weight += deltaWeight
 
+                totalError += error
                 pos += 1
+
+            logging.info("Iteration: %i; Error: %0.3f", iteration, -totalError)
+            iteration += 1
+
+            if round(totalError) == 0 or iteration >= self.epochs:
+                learned = True
+
 
 
     def classify(self, testInstance):
