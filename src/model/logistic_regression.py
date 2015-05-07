@@ -61,11 +61,11 @@ class LogisticRegression(Classifier):
                 output = self.fire(sample)
                
                 error = loss.calculateError(label, output)
-                grad = grad + error * sample
+                grad += error * sample
                 deltaWeight = self.learningRate * grad * sample
-                self.weight = self.weight + deltaWeight
+                self.weight += deltaWeight
 
-                pos = pos + 1
+                pos += 1
 
 
     def classify(self, testInstance):
