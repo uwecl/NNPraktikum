@@ -45,6 +45,9 @@ class LogisticRegression(Classifier):
 
     def train(self):
         """Train the Logistic Regression"""
+
+        from util.loss_functions import DifferentError
+        loss = DifferentError()
         
         for epoch in range(self.epochs):
             pos = 0
@@ -57,7 +60,7 @@ class LogisticRegression(Classifier):
                 label = self.trainingSet.label[pos]
                 output = self.fire(sample)
                
-                error = label - output
+                error = loss.calculateError(label, output)
                 grad = grad + error * sample
                 deltaWeight = self.learningRate * grad * sample
                 self.weight = self.weight + deltaWeight
