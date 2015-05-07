@@ -62,7 +62,7 @@ class LogisticRegression(Classifier):
                
                 error = loss.calculateError(label, output)
                 grad += error * sample
-                deltaWeight = self.learningRate * grad * sample
+                deltaWeight = self.learningRate * grad
                 self.weight += deltaWeight
 
                 pos += 1
